@@ -1,0 +1,40 @@
+@startuml
+
+class Car {
+  +carId : int
+  +plateNumber : String
+  +ownerName : String
+  +model : String
+  +color : String
+}
+
+class Gate {
+  +gateId : int
+  +gateName : String
+  +location : String
+}
+
+class Access {
+  +accessId : int
+}
+
+class Traffic {
+  +trafficId : int
+  +date : Date
+  +time : Time
+  +type : String
+}
+
+Car "1" -- "0..*" Access
+Gate "1" -- "0..*" Access
+
+Car "1" -- "0..*" Traffic
+Gate "1" -- "0..*" Traffic
+
+Access "*" --> "1" Car
+Access "*" --> "1" Gate
+
+Traffic "*" --> "1" Car
+Traffic "*" --> "1" Gate
+
+@enduml

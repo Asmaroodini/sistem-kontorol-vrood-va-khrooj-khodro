@@ -1,0 +1,24 @@
+@startuml
+
+actor "دوربین پلاک‌خوان" as Camera
+participant "سیستم کنترل" as System
+database "پایگاه داده" as DB
+participant "راه‌بند" as Gate
+
+Camera -> System : ارسال شماره پلاک
+
+System -> DB : بررسی وجود خودرو
+DB --> System : اطلاعات خودرو
+
+System -> DB : بررسی مجوز ورود
+DB --> System : مجاز / غیرمجاز
+
+alt مجاز
+    System -> Gate : باز کردن راه‌بند
+    Gate --> System : تایید
+    System -> DB : ثبت ورود
+else غیرمجاز
+    System -> DB : ثبت درخواست ناموفق
+end
+
+@enduml

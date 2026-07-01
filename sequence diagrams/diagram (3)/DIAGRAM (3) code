@@ -1,0 +1,19 @@
+@startuml
+
+actor "مدیر سیستم" as Admin
+participant "سیستم کنترل" as System
+database "پایگاه داده" as DB
+
+Admin -> System : ثبت اطلاعات خودرو
+
+System -> DB : ذخیره اطلاعات خودرو
+DB --> System : ثبت شد
+
+Admin -> System : تعیین سطح دسترسی
+
+System -> DB : ذخیره دسترسی خودرو
+DB --> System : ثبت موفق
+
+System --> Admin : پیام موفقیت
+
+@enduml

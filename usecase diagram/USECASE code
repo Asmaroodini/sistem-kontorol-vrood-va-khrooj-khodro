@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+
+actor "مدیر سیستم" as Admin
+actor "دوربین پلاک‌خوان" as Camera
+
+rectangle "سیستم کنترل ورود و خروج خودرو" {
+
+  usecase "مدیریت خودرو" as UC1
+  usecase "مدیریت راه‌بند" as UC2
+  usecase "تعریف سطح دسترسی" as UC3
+  usecase "بررسی پلاک خودرو" as UC4
+  usecase "کنترل مجوز ورود" as UC5
+  usecase "ثبت ورود خودرو" as UC6
+  usecase "ثبت خروج خودرو" as UC7
+  usecase "مشاهده گزارش تردد" as UC8
+
+}
+
+Admin --> UC1
+Admin --> UC2
+Admin --> UC3
+Admin --> UC8
+
+Camera --> UC4
+
+UC4 .> UC5 : <<include>>
+UC5 .> UC6 : <<extend>>
+UC5 .> UC7 : <<extend>>
+
+@enduml
